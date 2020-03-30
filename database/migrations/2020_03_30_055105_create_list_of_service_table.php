@@ -16,8 +16,8 @@ class CreateListOfServiceTable extends Migration {
 		{
 			$table->integer('id', true);
 			$table->string('nama_service', 50);
-			$table->text('status', 65535);
-			$table->text('service_owner', 65535);
+			$table->string('status', 20);
+			$table->string('service_owner', 30);
 			$table->date('updated_at')->nullable();
 			$table->date('created_at')->nullable();
 		});
