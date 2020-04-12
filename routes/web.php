@@ -14,7 +14,7 @@
 use App\Service;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 Auth::routes();
 
@@ -23,8 +23,12 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::group(['middleware' => 'auth'], function () {
 	//service list
 	Route::get('service-list', function () {
+		if(Auth::user()->role == 'admin'){
 		$data['service']= Service::get();
 		return view('pages.service_list', $data);
+		}else{
+			return redirect('/dokumen');
+		}
 	})->name('service');
 
 	Route::post('/service/create','ServiceController@create');
@@ -44,6 +48,21 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/domain/{id_list}/delete','DomainController@delete');
 
+
+	//Dokumen
+	Route::get('/dokumen','DokController@index')->name('dokumen');
+	
+	//edit,update, add dokumen bukti (user)
+	Route::get('/dok/upload','DokController@upload');
+	Route::post('/dok/add','DokController@add');
+
+	Route::get('/dok/{id}/edit','DokController@edit');
+	Route::post('/dok/{id}/update','DokController@update');
+	
+	Route::get('/dok/{id}/delete','DokController@delete');
+
+	
+	
 	Route::get('typography', function () {
 		return view('pages.typography');
 	})->name('typography');

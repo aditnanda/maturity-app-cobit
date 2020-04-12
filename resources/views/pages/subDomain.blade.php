@@ -18,10 +18,6 @@
           </div>
           <!-- <div class="col-6"></div> -->
           <div class="col-6">
-              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                Add
-              </button>
               <!-- Modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -56,6 +52,15 @@
             </div>
 
           <div class="card-body">
+            <!-- Button trigger modal -->
+            <div class="row">
+                <div class="col-12 text-right">
+                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                    Tambah Domain
+                  </button>
+                </div>
+              </div>
+              
             <div class="table-responsive">
               <table class="table">
                 <thead class=" text-primary">
@@ -74,14 +79,14 @@
                 </thead>
                 <?php $Nomor=1?>
                 @foreach($domain as $domain)
-                <thead class=small>
+                <tbody>
                   <th>{{$Nomor}}</th>
                   <th>{{$domain->nama_domain}}</th>
                   <th>{{$domain->keterangan}}</th>
                   <th><a href="/domain/{{$domain->id}}/edit" class="btn btn-info btn-sm">Edit</a>
                   <a href="/domain/{{$domain->id}}/delete" class="btn btn-danger btn-sm">Delete</a>
                   </th>
-                </thead>
+                </tbody>
                 <?php $Nomor++?>
                 @endforeach
               </table>

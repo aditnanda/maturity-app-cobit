@@ -11,7 +11,7 @@
       <span class="navbar-toggler-icon icon-bar"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end">
-      <ul class="navbar-nav">
+      <!-- <ul class="navbar-nav">
         <li class="nav-item">
           <a href="{{ route('home') }}" class="nav-link">
             <i class="material-icons">dashboard</i> {{ __('Dashboard') }}
@@ -32,7 +32,7 @@
             <i class="material-icons">face</i> {{ __('Profile') }}
           </a>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </nav>

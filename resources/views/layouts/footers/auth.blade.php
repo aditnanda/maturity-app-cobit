@@ -1,7 +1,7 @@
 <footer class="footer">
   <div class="container-fluid">
     <nav class="float-left">
-      <ul>
+      <!-- <ul>
         <li>
           <a href="https://www.creative-tim.com">
               {{ __('Creative Tim') }}
@@ -22,7 +22,7 @@
               {{ __('Licenses') }}
           </a>
         </li>
-      </ul>
+      </ul> -->
     </nav>
     <div class="copyright float-right">
       &copy;
