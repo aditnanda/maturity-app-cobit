@@ -29,7 +29,7 @@ class ServiceController extends Controller
         $service->update($request->all());
         // return redirect('/service-list');
         $data['service']= \App\Service::get();
-		return view('pages.service_list', $data);
+        return view('pages.service_list', $data)->withStatus(__('Data Layanan telah di update.'));
     }
 
     public function delete($id_list)

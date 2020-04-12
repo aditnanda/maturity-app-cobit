@@ -66,7 +66,7 @@
                         <input name="nama_service" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Layanan terkait.." value="{{$dokumen->nama_service}}">
                     </div>
                     <div class="modal-footer">
-                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <a href="/dokumen" type="button" class="btn btn-secondary">Cancel</a>
                         <button type="Add" class="btn btn-primary">Update Data</button>
                     </div>
                 </form>  

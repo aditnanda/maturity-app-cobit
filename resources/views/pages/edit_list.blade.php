@@ -41,7 +41,7 @@
                         <input name="service_owner" type="text" class="form-control" id="exampleInputPassword1" placeholder="Servis Owner" value="{{$service->service_owner}}">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <a href="/service-list" type="button" class="btn btn-secondary">Cancel</a>
                         <button type="Add" class="btn btn-primary">Update Data</button>
                     </div>
                 </form>   

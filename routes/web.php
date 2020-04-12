@@ -61,6 +61,9 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	Route::get('/dok/{id}/delete','DokController@delete');
 
+	//edit, update, add skor assessment(admin)
+	Route::get('skor/create','SkorController@create');
+
 	
 	
 	Route::get('typography', function () {

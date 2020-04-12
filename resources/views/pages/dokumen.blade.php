@@ -28,7 +28,7 @@
             @if(Auth::user()->role == 'admin' )
             <div class="row">
               <div class="col-12 text-right">
-                <a href="dok/upload" class="btn btn-sm btn-primary">{{ __('Input Skor') }}</a>
+                <a href="skor/create" class="btn btn-sm btn-primary">{{ __('Input Skor') }}</a>
               </div>
             </div>
             @endif
@@ -58,13 +58,20 @@
                 <tbody>
                   <th>{{$dokumen->nama_proses}}</th>
                   <th>{{$dokumen->nama_proses}}-{{$dokumen->no_bukti}}-{{$dokumen->urutan_bukti}}</th>
-                  <!-- <th>{{$dokumen->keterangan}}</th> -->
                   <th>{{$dokumen->nama_service}}</th>
                   <th>{{$dokumen->target_skor}}</th>
                   <th></th>
+                  @if(Auth::user()->role == 'user' )
                   <th><a href="/dok/{{$dokumen->id}}/edit" class="btn btn-info btn-sm">Edit</a>
                   <a href="/dok/{{$dokumen->id}}/delete" class="btn btn-danger btn-sm">Delete</a>
                   </th>
+                  @endif
+
+                  @if(Auth::user()->role == 'admin' )
+                  <th><a href="" class="btn btn-info btn-sm">Edit</a>
+                  <a href="" class="btn btn-danger btn-sm">Delete</a>
+                  </th>
+                  @endif
                 </tbody>
                 @endforeach
               </table>

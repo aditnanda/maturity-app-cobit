@@ -16155,7 +16155,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .table>thead>tr>td,
 .table>tbody>tr>td,
 .table>tfoot>tr>td {
-  padding: 12px 8px;
+  padding: 9px 8px;
   vertical-align: middle;
   border-color: #ddd;
 }
