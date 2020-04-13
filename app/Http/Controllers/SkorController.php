@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Skor;
+use App\Dokumen;
 
 class SkorController extends Controller
 {
@@ -35,7 +37,18 @@ class SkorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $this->validate($request, [
+        //     'skor_maturity' => 'required',
+        //     'rekom' => 'required',
+        // ]);
+
+        // $skor = New Skor;
+        // $skor->skor = $request->skor;
+        // $skor->rekom = $request->rekom;
+
+        // $skor->save();
+
+        // return redirect('dokumen');
     }
 
     /**

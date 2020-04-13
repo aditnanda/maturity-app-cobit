@@ -27,6 +27,7 @@ class DokController extends Controller
         //validasi di form view add_dok 
         $this->validate($request, [
             'nama_proses' => 'required',
+            'sub_domain' => 'required',
             'no_bukti' => 'required',
             'urutan_bukti' => 'required',
             'file' => 'required|mimes:doc,docx,pdf,xls,xlsx,doc,docx,png,jpg|max:10000',
@@ -36,6 +37,7 @@ class DokController extends Controller
         //upload to db
         $dokumen = new Dokumen;
         $dokumen->nama_proses = $request->nama_proses;
+        $dokumen->sub_domain = $request->sub_domain;
         $dokumen->no_bukti = $request->no_bukti;
         $dokumen->urutan_bukti = $request->urutan_bukti;
         $dokumen->nama_service = $request->nama_service;
@@ -62,6 +64,7 @@ class DokController extends Controller
         //validasi di form view add_dok 
         $this->validate($request, [
             'nama_proses' => 'required',
+            'sub_domain' => 'required',
             'no_bukti' => 'required',
             'urutan_bukti' => 'required',
             // 'file' => 'required|mimes:doc,docx,pdf,xls,xlsx,doc,docx,png,jpg|max:10000',
@@ -71,6 +74,7 @@ class DokController extends Controller
         $dokumen = Dokumen::findOrFail($id);
 
         $dokumen->nama_proses = $request->nama_proses;
+        $dokumen->sub_domain = $request->sub_domain;
         $dokumen->no_bukti = $request->no_bukti;
         $dokumen->urutan_bukti = $request->urutan_bukti;
         $dokumen->nama_service = $request->nama_service;
@@ -106,5 +110,12 @@ class DokController extends Controller
 		Dokumen::where('id',$id)->delete();
  
 		return redirect()->back();
+    }
+
+    public function download($id)
+    {
+        $download = Dokumen::find($id);
+        // return Storage::download($download->path, $download->file);
+        return response()->download(public_path("storage/dokumen/{$download->file}"));
     }
 }

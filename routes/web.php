@@ -60,9 +60,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/dok/{id}/update','DokController@update');
 	
 	Route::get('/dok/{id}/delete','DokController@delete');
+	Route::get('/dok/{id}/download','DokController@download');
 
 	//edit, update, add skor assessment(admin)
 	Route::get('skor/create','SkorController@create');
+	// Route::post('skor/store','SkorController@store');
 
 	
 	

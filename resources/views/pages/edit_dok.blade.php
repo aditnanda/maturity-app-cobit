@@ -39,6 +39,10 @@
                         <input name="nama_proses" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama proses (domain).." value="{{$dokumen->nama_proses}}">
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputEmail1">Sub Domain Proses</label>
+                        <input name="sub_domain" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nomor sub Domain Proses" value="{{$dokumen->sub_domain}}">
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputEmail1">Nomor Bukti</label>
                         <input name="no_bukti" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nomor bukti dokumen.." value="{{$dokumen->no_bukti}}">
                     </div>

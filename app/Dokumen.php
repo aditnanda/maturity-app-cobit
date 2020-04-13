@@ -19,4 +19,5 @@ class Dokumen extends Model
         'target_skor',
         'created_at',
         'updated_at'];
+    
 }

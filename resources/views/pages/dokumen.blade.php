@@ -56,11 +56,12 @@
                 </thead>
                 @foreach($dokumen as $dokumen)
                 <tbody>
-                  <th>{{$dokumen->nama_proses}}</th>
-                  <th>{{$dokumen->nama_proses}}-{{$dokumen->no_bukti}}-{{$dokumen->urutan_bukti}}</th>
+                  <th>{{$dokumen->nama_proses}}{{$dokumen->sub_domain}}</th>
+                  <th>{{$dokumen->nama_proses}}{{$dokumen->sub_domain}}-{{$dokumen->no_bukti}}-{{$dokumen->urutan_bukti}}</th>
                   <th>{{$dokumen->nama_service}}</th>
                   <th>{{$dokumen->target_skor}}</th>
                   <th></th>
+
                   @if(Auth::user()->role == 'user' )
                   <th><a href="/dok/{{$dokumen->id}}/edit" class="btn btn-info btn-sm">Edit</a>
                   <a href="/dok/{{$dokumen->id}}/delete" class="btn btn-danger btn-sm">Delete</a>
@@ -70,6 +71,7 @@
                   @if(Auth::user()->role == 'admin' )
                   <th><a href="" class="btn btn-info btn-sm">Edit</a>
                   <a href="" class="btn btn-danger btn-sm">Delete</a>
+                  <a href="dok/{{$dokumen->id}}/download" class="btn btn-success btn-sm">Download</a>
                   </th>
                   @endif
                 </tbody>
