@@ -71,7 +71,6 @@
                   @if(Auth::user()->role == 'admin' )
                   <th><a href="" class="btn btn-info btn-sm">Edit</a>
                   <a href="" class="btn btn-danger btn-sm">Delete</a>
-                  <a href="dok/{{$dokumen->id}}/download" class="btn btn-success btn-sm">Download</a>
                   </th>
                   @endif
                 </tbody>
