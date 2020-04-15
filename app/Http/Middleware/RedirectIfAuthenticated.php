@@ -17,10 +17,10 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+         //untuk kembali ke settingan normal
         if (Auth::guard($guard)->check()) {
             return redirect('/home');
         }
-
         return $next($request);
     }
 }

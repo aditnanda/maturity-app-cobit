@@ -34,12 +34,12 @@
                 <form action="{{url('/dok')}}/add" method="POST" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Nama Proses</label>
-                        <input name="nama_proses" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama proses (domain)..">
+                        <label for="exampleInputEmail1">Nama Domain</label>
+                        <input name="nama_proses" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama domain..">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Sub Domain Proses</label>
-                        <input name="sub_domain" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nomor sub Domain Proses..">
+                        <label for="exampleInputEmail1">Nomor Sub Domain</label>
+                        <input name="sub_domain" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nomor sub domain..">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nomor Bukti</label>
@@ -54,6 +54,7 @@
                         <input name="target_skor" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Target Skor Asessmen..">
                     </div>
                     <div class="form-group form-file-upload form-file-multiple">
+                    <label for="exampleInputEmail1">Bukti Dokumen</label>
                         <input type="file" name="file" multiple="" class="inputFileHidden">
                         <div class="input-group">
                             <input type="text" class="form-control inputFileVisible" placeholder="Masukkan Bukti Dokumen">
@@ -69,7 +70,7 @@
                         <input name="nama_service" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Layanan terkait..">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <a href="/dokumen" type="button" class="btn btn-secondary">Cancel</a>
                         <button type="Add" class="btn btn-primary">Add Data</button>
                     </div>
                 </form>  

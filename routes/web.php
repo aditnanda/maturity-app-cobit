@@ -14,8 +14,22 @@
 use App\Service;
 
 Route::get('/', function () {
-    return view('auth.login');
+	// return view('auth.login');
+	if (Auth::user() == null) {
+		return view('auth.login');
+    }else if (Auth::user()->role == 'user'){
+		return redirect('/dokumen');
+	}else  if (Auth::user()->role == 'admin'){
+		return redirect('service-list');
+
+	}
+
+	// if (Auth::user()) {
+    //     return redirect('/home');
+	// }
+	// return view('auth.login');
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
@@ -99,5 +113,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 });
+
+
 
 // Route::get()

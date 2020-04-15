@@ -33,7 +33,7 @@
                         <!-- <textarea name="keterangan" class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea> -->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <a href="/domain" type="button" class="btn btn-secondary">Cancel</a>
                         <button type="Add" class="btn btn-primary">Update Data</button>
                     </div>
                 </form>   
