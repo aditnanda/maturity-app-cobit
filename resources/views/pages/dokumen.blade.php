@@ -63,13 +63,14 @@
                   <th></th>
 
                   @if(Auth::user()->role == 'user' )
-                  <th><a href="/dok/{{$dokumen->id}}/edit" class="btn btn-info btn-sm">Edit</a>
-                  <a href="/dok/{{$dokumen->id}}/delete" class="btn btn-danger btn-sm">Delete</a>
+                  <th><a href="/dok/{{$dokumen1->id}}/edit" class="btn btn-info btn-sm">Edit</a>
+                  <a href="/dok/{{$dokumen1->id}}/delete" class="btn btn-danger btn-sm">Delete</a>
                   </th>
                   @endif
 
                   @if(Auth::user()->role == 'admin' )
-                  <th><a href="" class="btn btn-info btn-sm">Edit</a>
+                  <th>
+                  <a href="" class="btn btn-info btn-sm">Edit</a>
                   <a href="" class="btn btn-danger btn-sm">Delete</a>
                   </th>
                   @endif
@@ -85,6 +86,5 @@
       </div>
     </div>
   </div>
-
 </div>
 @endsection
