@@ -70,6 +70,7 @@
 
                   @if(Auth::user()->role == 'admin' )
                   <th>
+                  <a href="dok/{{$dokumen1->id}}/download"class="btn btn-info btn-sm">DL</a>
                   <a href="" class="btn btn-info btn-sm">Edit</a>
                   <a href="" class="btn btn-danger btn-sm">Delete</a>
                   </th>
