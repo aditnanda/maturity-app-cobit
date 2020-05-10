@@ -8,7 +8,7 @@ class DomainController extends Controller
 {
     public function index()
     {
-        $data['domain'] = \App\Domain::get(); 
+        $data['domain'] = \App\Domain::orderBy('id', 'desc')->paginate(5); 
         return view('pages.subDomain',$data);
     }
 

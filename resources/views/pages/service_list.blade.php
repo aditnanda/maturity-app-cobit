@@ -74,7 +74,7 @@
             
             <div class="table-responsive">
               <table class="table">
-                <thead class=" text-primary">
+                <thead class=" text-primary text-center">
                   <th>
                     Service Name 
                   </th>
@@ -89,7 +89,7 @@
                   </th>
                 </thead>
                 @foreach($service as $service)
-                <tbody>
+                <tbody  class="text-center">
                   <th>{{$service->nama_service}}</th>
                   <th>{{$service->status}}</th>
                   <th>{{$service->service_owner}}</th>

@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Domain extends Model
 {
     protected $table='domain';
-    protected $fillable=['id','nama_domain','keterangan','created_at','updated_at'];
+    protected $fillable=['id','nama_domain','nomor_proses','keterangan','created_at','updated_at'];
 }

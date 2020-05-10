@@ -23,7 +23,7 @@
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">Input Domain</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -31,9 +31,40 @@
                     <div class="modal-body">
                       <form action="domain/create" method="POST">
                         {{csrf_field()}}
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                           <label for="exampleInputEmail1">Nama Domain</label>
                           <input name="nama_domain" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div> -->
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Nama Domain</label>
+                          <select name="nama_domain" class="form-control" id="exampleFormControlSelect1">
+                            <option selected>Pilih Domain...</option>
+                            <option value="APO">APO</option>
+                            <option value="BAI">BAI</option>
+                            <option value="DSS">DSS</option>
+                            <option value="MEA">MEA</option>
+                            <option value="EDM">EDM</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Urutan Proses</label>
+                          <select name="nomor_proses" class="form-control" id="exampleFormControlSelect1">
+                            <option selected>Pilih Nomor Proses...</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                          </select>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Keterangan</label>
@@ -63,7 +94,7 @@
               
             <div class="table-responsive">
               <table class="table">
-                <thead class=" text-primary">
+                <thead class=" text-primary text-center">
                   <th>
                     No.
                   </th>
@@ -78,18 +109,21 @@
                   </th>
                 </thead>
                 <?php $Nomor=1?>
-                @foreach($domain as $domain)
-                <tbody>
+                @foreach($domain as $data)
+                <tbody  class="text-center">
                   <th>{{$Nomor}}</th>
-                  <th>{{$domain->nama_domain}}</th>
-                  <th>{{$domain->keterangan}}</th>
-                  <th><a href="/domain/{{$domain->id}}/edit" class="btn btn-info btn-sm">Edit</a>
-                  <a href="/domain/{{$domain->id}}/delete" class="btn btn-danger btn-sm">Delete</a>
+                  <th>{{$data->nama_domain}}{{$data->nomor_proses}}</th>
+                  <th>{{$data->keterangan}}</th>
+                  <th><a href="/domain/{{$data->id}}/edit" class="btn btn-info btn-sm">Edit</a>
+                  <a href="/domain/{{$data->id}}/delete" class="btn btn-danger btn-sm">Delete</a>
                   </th>
                 </tbody>
                 <?php $Nomor++?>
                 @endforeach
               </table>
+              <div class="text-center">
+                {!! $domain->links(); !!}
+              </div>
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ class DokController extends Controller
 {
     public function index()
     {
-        $data['dokumen'] = \App\Dokumen::get();
+        $data['dokumen'] = \App\Dokumen::paginate(5);
         return view('pages.dokumen',$data);
     }
 
@@ -27,9 +27,9 @@ class DokController extends Controller
         //validasi di form view add_dok 
         $this->validate($request, [
             'nama_proses' => 'required',
-            'sub_domain' => 'required',
-            'no_bukti' => 'required',
-            'urutan_bukti' => 'required',
+            'sub_domain' => 'required|numeric',
+            'no_bukti' => 'required|numeric',
+            'urutan_bukti' => 'required|numeric',
             'file' => 'required|mimes:doc,docx,pdf,xls,xlsx,doc,docx,png,jpg|max:10000',
             'target_skor' => 'required'
         ]);
@@ -64,9 +64,9 @@ class DokController extends Controller
         //validasi di form view add_dok 
         $this->validate($request, [
             'nama_proses' => 'required',
-            'sub_domain' => 'required',
-            'no_bukti' => 'required',
-            'urutan_bukti' => 'required',
+            'sub_domain' => 'required|numeric',
+            'no_bukti' => 'required|numeric',
+            'urutan_bukti' => 'required|numeric',
             // 'file' => 'required|mimes:doc,docx,pdf,xls,xlsx,doc,docx,png,jpg|max:10000',
             'target_skor' => 'required'
         ]);
@@ -106,7 +106,7 @@ class DokController extends Controller
         $dok = public_path("storage/dokumen/{$dokumen->file}");
         unlink($dok);
 
-		// hapus data
+		// hapus data db
 		Dokumen::where('id',$id)->delete();
  
 		return redirect()->back();

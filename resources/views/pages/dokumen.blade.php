@@ -34,7 +34,7 @@
             @endif
             <div class="table-responsive">
               <table class="table">
-                <thead class=" text-primary">
+                <thead class=" text-primary text-center">
                   <th>
                     Proses
                   </th>
@@ -54,12 +54,12 @@
                     Aksi
                   </th>
                 </thead>
-                @foreach($dokumen as $dokumen)
-                <tbody>
-                  <th>{{$dokumen->nama_proses}}{{$dokumen->sub_domain}}</th>
-                  <th>{{$dokumen->nama_proses}}{{$dokumen->sub_domain}}-{{$dokumen->no_bukti}}-{{$dokumen->urutan_bukti}}</th>
-                  <th>{{$dokumen->nama_service}}</th>
-                  <th>{{$dokumen->target_skor}}</th>
+                @foreach($dokumen as $dokumen1)
+                <tbody class="text-center">
+                  <th>{{$dokumen1->nama_proses}}{{$dokumen1->sub_domain}}</th>
+                  <th>{{$dokumen1->nama_proses}}{{$dokumen1->sub_domain}}-{{$dokumen1->no_bukti}}-{{$dokumen1->urutan_bukti}}</th>
+                  <th>{{$dokumen1->nama_service}}</th>
+                  <th>{{$dokumen1->target_skor}}</th>
                   <th></th>
 
                   @if(Auth::user()->role == 'user' )
@@ -76,11 +76,15 @@
                 </tbody>
                 @endforeach
               </table>
+              <div class="text-center">
+                {!! $dokumen->links(); !!}
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>
 @endsection
