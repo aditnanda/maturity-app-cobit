@@ -28,22 +28,104 @@
         <div class="col-lg-12 col-md-12">
           <div class="card">
             <div class="card-header card-header-warning">
-              <h4 class="card-title">Gap Analisis</h4>
+              <h4 class="card-title">Hasil</h4>
               <p class="card-category"></p>
             </div>
+            
             <div class="card-body table-responsive">
+              <div class="row">
+                <div class="col-12 text-left">
+                  <h5>Domain APO</h5>
+                </div>
+              </div>
               <table class="table table-hover">
                 <thead class="text-warning">
-                  <th>ID</th>
+                  <th>Domain</th>
+                  <th>Kode Bukti</th>
                   <th>Target</th>
                   <th>Skor Maturity</th>
-                  <th>Gap</th>
-                  <th>Aksi</th>
+                </thead>
+                <tbody>
+
+                </tbody>
+              </table>
+
+              <div class="row">
+                <div class="col-12 text-left">
+                  <h5>Domain BAI</h5>
+                </div>
+              </div>
+
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <th>Domain</th>
+                  <th>Kode Bukti</th>
+                  <th>Target</th>
+                  <th>Skor Maturity</th>
                 </thead>
                 <tbody>
                   
                 </tbody>
               </table>
+
+              <div class="row">
+                <div class="col-12 text-left">
+                  <h5>Domain MEA</h5>
+                </div>
+              </div>
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <th>Domain</th>
+                  <th>Kode Bukti</th>
+                  <th>Target</th>
+                  <th>Skor Maturity</th>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+              </table>
+
+              <div class="row">
+                <div class="col-12 text-left">
+                  <h5>Domain DSS</h5>
+                </div>
+              </div>
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <th>Domain</th>
+                  <th>Kode Bukti</th>
+                  <th>Target</th>
+                  <th>Skor Maturity</th>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12">
+          <div class="card">
+            <div class="card-header card-header-warning">
+              <h4 class="card-title">Gap</h4>
+              <p class="card-category"></p>
+            </div>
+            
+            <div class="card-body table-responsive">
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <th>Domain</th>
+                  <th>Target</th>
+                  <th>Skor Maturity</th>
+                  <th>Gap</th>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+              </table>
+
             </div>
           </div>
         </div>

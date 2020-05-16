@@ -25,13 +25,13 @@
               </div>
             </div>
             @endif
-            @if(Auth::user()->role == 'admin' )
+            <!-- @if(Auth::user()->role == 'admin' )
             <div class="row">
               <div class="col-12 text-right">
-                <a href="skor/create" class="btn btn-sm btn-primary">{{ __('Input Skor') }}</a>
+                <a href="" class="btn btn-sm btn-primary">{{ __('Input Skor') }}</a>
               </div>
             </div>
-            @endif
+            @endif -->
             <div class="table-responsive">
               <table class="table">
                 <thead class=" text-primary text-center">
@@ -60,7 +60,7 @@
                   <th>{{$dokumen1->nama_proses}}{{$dokumen1->sub_domain}}-{{$dokumen1->no_bukti}}-{{$dokumen1->urutan_bukti}}</th>
                   <th>{{$dokumen1->nama_service}}</th>
                   <th>{{$dokumen1->target_skor}}</th>
-                  <th></th>
+                  <th>{{$dokumen1->skor_maturity}}</th>
 
                   @if(Auth::user()->role == 'user' )
                   <th><a href="/dok/{{$dokumen1->id}}/edit" class="btn btn-info btn-sm">Edit</a>
@@ -70,9 +70,9 @@
 
                   @if(Auth::user()->role == 'admin' )
                   <th>
-                  <a href="dok/{{$dokumen1->id}}/download"class="btn btn-info btn-sm">DL</a>
-                  <a href="" class="btn btn-info btn-sm">Edit</a>
-                  <a href="" class="btn btn-danger btn-sm">Delete</a>
+                  <a href="dok/{{$dokumen1->id}}/download"class="btn btn-primary btn-sm"><i class="material-icons">save_alt</i></a>
+                  <a href="dok/{{$dokumen1->id}}/addskor" class="btn btn-info btn-sm"><i class="material-icons">add_box</i></a>
+                  <a href="dok/{{$dokumen1->id}}/edskor" class="btn btn-danger btn-sm"><i class="material-icons">edit</i></a>
                   </th>
                   @endif
                 </tbody>

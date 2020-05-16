@@ -17,6 +17,8 @@ class Dokumen extends Model
         'keterangan',
         'nama_service',
         'target_skor',
+        'skor_maturity',
+        'rekom',
         'created_at',
         'updated_at'];
     

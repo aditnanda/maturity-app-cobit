@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Dokumen;
 class HomeController extends Controller
 {
     /**
@@ -21,6 +21,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $dokumen = Dokumen::all()->groupBy('nama_proses');
+        // dd($dokumen);
         return view('dashboard');
     }
 }

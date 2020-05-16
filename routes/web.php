@@ -77,9 +77,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/dok/{id}/download','DokController@download');
 
 	//edit, update, add skor assessment(admin)
-	Route::get('skor/create','SkorController@create');
+	Route::get('/dok/{id}/addskor','DokController@addskor');
+	Route::post('/dok/{id}/skor','DokController@skor');
+
+	Route::get('/dok/{id}/edskor','DokController@edskor');
+	// Route::get('skor/create','SkorController@create');
 	// Route::post('skor/store','SkorController@store');
 
+	//hasil
+	Route::get('/hasil','HasilController@index');
 	
 	
 	Route::get('typography', function () {

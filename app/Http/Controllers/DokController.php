@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Dokumen;
+use App\Skor;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -82,7 +83,7 @@ class DokController extends Controller
 
         if(input::hasFile('file')){
             //path dokumen
-            $dok = public_path("storage/dokumen/{$dokumen->file}");
+            $dok = storage_path("app/public/dokumen/{$dokumen->file}");
             //jika sama maka akan dihapus
             if(File::exists($dok)){
                 unlink($dok);
@@ -100,10 +101,9 @@ class DokController extends Controller
 
     public function delete($id)
     {
-
         // hapus file
         $dokumen = Dokumen::findOrFail($id);
-        $dok = public_path("storage/dokumen/{$dokumen->file}");
+        $dok = storage_path("app/public/dokumen/{$dokumen->file}");
         unlink($dok);
 
 		// hapus data db
@@ -116,6 +116,42 @@ class DokController extends Controller
     {
         $download = Dokumen::find($id);
         // return Storage::download($download->path, $download->file);
-        return response()->download(public_path("storage/dokumen/{$download->file}"));
+        return response()->download(storage_path("app/public/dokumen/{$download->file}"));
     }
+
+    public function addskor($id)
+    {
+        $dokumen = Dokumen::find($id);
+        // dd($dokumen);
+        return view('pages.skor', compact('dokumen'));
+    }
+
+    public function skor(Request $request, $id)
+    {
+        $this->validate($request, [
+            'skor_maturity' => 'required|numeric',
+            'rekom' => 'required',
+        ]);
+
+        $dokumen = Dokumen::findOrFail($id);
+        $dokumen->skor_maturity = $request->skor_maturity;
+        $dokumen->rekom = $request->rekom;
+
+        $dokumen->save();
+
+        return redirect('dokumen');
+    }
+
+    public function edskor($id)
+    {
+        $dokumen = Dokumen::find($id);
+        return view('pages.edit_skor',compact('dokumen'));
+    }
+
+    // public function updskor(Request $request, $id)
+    // {
+    //     $dokumen = Dokumen::find($id);
+
+    // }
+
 }
