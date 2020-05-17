@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/dokumen','api\DokumenController@index');
+Route::get('/chart/maturity','api\DokumenController@index');
