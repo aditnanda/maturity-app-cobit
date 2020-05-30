@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Dokumen;
 use App\Skor;
+use DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -51,7 +52,7 @@ class DokController extends Controller
         
         $dokumen->save();
         
-        return redirect('dokumen');
+        return redirect('dokumen')->withStatus(__('Data Dokumen Bukti Berhasil ditambah.'));
     }
 
     public function edit($id)
@@ -95,7 +96,7 @@ class DokController extends Controller
 
         $dokumen->save();
 
-        return redirect('dokumen');
+        return redirect('dokumen')->withStatus(__('Data Dokumen Bukti Berhasil di update.'));
 
     }
 
@@ -109,7 +110,7 @@ class DokController extends Controller
 		// hapus data db
 		Dokumen::where('id',$id)->delete();
  
-		return redirect()->back();
+		return redirect()->back()->withStatus(__('Data Dokumen Bukti telah di hapus.'));
     }
 
     public function download($id)
@@ -139,7 +140,7 @@ class DokController extends Controller
 
         $dokumen->save();
 
-        return redirect('dokumen');
+        return redirect('dokumen')->withStatus(__('Skor Assessment Berhasil di input.'));
     }
 
     public function edskor($id)
@@ -148,10 +149,36 @@ class DokController extends Controller
         return view('pages.edit_skor',compact('dokumen'));
     }
 
-    // public function updskor(Request $request, $id)
-    // {
-    //     $dokumen = Dokumen::find($id);
+    public function updskor(Request $request, $id)
+    {
+        $this->validate($request, [
+            'skor_maturity' => 'required|numeric',
+            'rekom' => 'required',
+        ]);
 
-    // }
+        $dokumen = Dokumen::findOrFail($id);
+        $dokumen->skor_maturity = $request->skor_maturity;
+        $dokumen->rekom = $request->rekom;
 
+        $dokumen->save();
+
+        return redirect('dokumen')->withStatus(__('Skor Assessment Berhasil di update.'));
+
+    }
+
+    public function searchdok(Request $request)
+    {
+        $cari = $request->seadok;
+
+        $dok = DB::table('dokumen')->where('nama_proses', 'LIKE',  "%".$cari."%") 
+                                        ->orWhere('no_bukti',  'LIKE',  "%".$cari."%")
+                                        ->orWhere('target_skor',  'LIKE',  "%".$cari."%")->paginate(8);
+        // $sd = Dokumen::when($request->seadok, 
+        //                     function($query) use($request){
+        //                         $query->where('nama_proses', 'LIKE',  "%{$request->seadok}%") 
+        //                                   ->orWhere('no_bukti',  'LIKE',  "%{$request->seadok}%")
+        //                                   ->orWhere('target_skor',  'LIKE',  "%{$request->seadok}%");
+        //                     })->get();
+        return view('pages.dokumen', ['dokumen' => $dok]);
+    }
 }

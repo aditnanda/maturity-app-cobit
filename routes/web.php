@@ -86,8 +86,15 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//hasil
 	Route::get('/hasil','HasilController@index');
+
+	//fitur search
+	Route::get('/dok/searchdok', 'DokController@searchdok');
+	Route::get('/service/searchserv', 'ServiceController@searchserv');
+	Route::get('/domain/searchdom', 'DomainController@searchdom');
 	
-	
+	//cetak
+	Route::get('/home/report', 'HomeController@report');
+
 	Route::get('typography', function () {
 		return view('pages.typography');
 	})->name('typography');

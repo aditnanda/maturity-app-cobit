@@ -11,12 +11,27 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <div class="col-6">
-              <h4 class="card-title ">List of Service</h4>
-              <p class="card-category"> Here is a subtitle for this table</p>
+            <div class="row">
+              <div class="col-xs-10 col-md-8">
+                <h4 class="card-title ">Daftar Service </h4>
+                <p class="card-category"> Here is a subtitle for this table</p>
+              </div>
             </div>
+           
           </div>
           <!-- <div class="col-6"></div> -->
+          @if (session('status'))
+                  <div class="row">
+                    <div class="col-sm-10">
+                      <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="material-icons">close</i>
+                        </button>
+                        <span>{{ session('status') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                @endif
           <div class="col-6">
               <!-- Button trigger modal -->
 
@@ -64,8 +79,28 @@
 
           <div class="card-body">
           <!-- Button trigger modal -->
+          @if(count($errors) > 0)
+                  <div class="alert alert-danger">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="material-icons">close</i>
+                      </button>
+                    @foreach ($errors->all() as $error)
+                      {{ $error }} <br/>
+                    @endforeach
+                  </div>
+                @endif
             <div class="row">
-              <div class="col-12 text-right">
+            <div class="col-xs-12 col-md-10">
+                  <form class="form-inline ml-auto" method="get" action="{{url('/service')}}/searchserv">
+                      <div class="form-group no-border">
+                        <input type="text" name="seaserv" class="form-control" placeholder="Search">
+                      </div>
+                      <button type="submit" class="btn btn-just-icon btn-round">
+                        <i class="material-icons">search</i>
+                      </button>
+                  </form>
+                </div>
+              <div class="col-xs-0 col-md-2">
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
                   Tambah Service
                 </button>
@@ -76,7 +111,7 @@
               <table class="table">
                 <thead class=" text-primary text-center">
                   <th>
-                    Service Name 
+                    Nama Service 
                   </th>
                   <th>
                     Status

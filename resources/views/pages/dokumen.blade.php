@@ -11,12 +11,28 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <div class="col-6">
-              <h4 class="card-title ">Data Dokumen</h4>
-              <p class="card-category"> Upload data dokumen sesuai dengan urutan nomor bukti</p>
-            </div>
+            <div class ="row">
+              <div class="col-xs-10 col-md-8">
+                  <h4 class="card-title ">Data Dokumen</h4>
+                  <p class="card-category"> Upload data dokumen sesuai dengan urutan nomor bukti</p>
+                </div>
+               
+            </div>  
           </div> 
           
+          @if (session('status'))
+                  <div class="row">
+                    <div class="col-sm-10">
+                      <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="material-icons">close</i>
+                        </button>
+                        <span>{{ session('status') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                @endif
+
           <div class="card-body">
             @if(Auth::user()->role == 'user' )
             <div class="row">
@@ -25,6 +41,7 @@
               </div>
             </div>
             @endif
+
             <!-- @if(Auth::user()->role == 'admin' )
             <div class="row">
               <div class="col-12 text-right">
@@ -33,6 +50,16 @@
             </div>
             @endif -->
             <div class="table-responsive">
+                <div class="col-xs-2 col-md-4">
+                  <form class="form-inline ml-auto" method="get" action="{{url('/dok')}}/searchdok">
+                      <div class="form-group no-border">
+                        <input type="text" name="seadok" class="form-control" placeholder="Search">
+                      </div>
+                      <button type="submit" class="btn btn-just-icon btn-round">
+                        <i class="material-icons">search</i>
+                      </button>
+                  </form>
+                </div>
               <table class="table">
                 <thead class=" text-primary text-center">
                   <th>
@@ -80,6 +107,7 @@
               </table>
               <div class="text-center">
                 {!! $dokumen->links(); !!}
+             
               </div>
             </div>
           </div>
