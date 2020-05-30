@@ -12,7 +12,7 @@
               <canvas id="maturitylevel"></canvas>
             </div>
             <div class="card-body">
-            <a href="/home/report">View report</a>
+            <input type="button" class="btn btn-primary" id="viewreport" value="View Report">
               <!-- <form>
                 <input type="button" value="Print this page" onClick="window.print()">
               </form> -->
@@ -177,4 +177,6 @@
       md.initDashboardPageCharts();
     });
   </script>
+  <script src="{{ asset('/js/FileSaver.js') }}"></script>
+  <script src="{{ asset('/js/canvas-toBlob.js') }}"></script>
 @endpush

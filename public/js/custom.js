@@ -1,6 +1,5 @@
 var ctx = document.getElementById("maturitylevel");
 var base_url = window.location.origin+'/';
-console.log(base_url);
 
 $.ajax({
   url      : base_url+'api/chart/maturity',
@@ -46,3 +45,30 @@ $.ajax({
   }
 });
 
+
+$("#viewreport").click(function() {
+    // $("#maturitylevel").get(0).toBlob(function(blob) {
+    // //   saveAs(blob, "chart_1");
+    //   console.log(blob);
+    //     var url = base_url + 'home/report';
+      
+    //   window.open(url,'_blank');
+    // });
+    var ctx = document.getElementById("maturitylevel");
+    var dataURL = ctx.toDataURL();
+    console.log(dataURL);
+
+    $.ajax({
+        type: "POST",
+        url: base_url + 'api/report/chart',
+        data: { 
+           file: dataURL
+        }
+      }).done(function(o) {
+        console.log('saved',o); 
+        var url = base_url + 'home/report';
+      
+        window.open(url,'_blank');
+      });
+    
+});

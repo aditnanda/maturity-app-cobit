@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 use App\Dokumen;
 use PDF;
+use Symfony\Component\Templating\EngineInterface;
+use Dompdf\Adapter\CPDF;
+use Dompdf\Dompdf;
+use Dompdf\Exception;
+
 class HomeController extends Controller
 {
     /**
@@ -127,11 +132,15 @@ class HomeController extends Controller
         );
         // dd($data);
         
-        $dok['dokumen'] = Dokumen::all();
+        $data['dokumen'] = Dokumen::all();
 
-        // return view('pages.report', $data, $dok);
-        $pdf = PDF::loadview('pages.report',$data, $dok);
+        $pdf = PDF::loadview('pages.report',$data);
+
+        // dd($pdf);
         // return $pdf->download('laporan-hasil-pdf');
-        return $pdf->stream();
+
+        return view('pages.report',$data);
+        
+        // return $pdf->stream('my.pdf',array('Attachment'=>0));
     }
 }
