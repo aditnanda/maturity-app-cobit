@@ -52,10 +52,13 @@
                           <label for="exampleInputEmail1">Nama Domain</label>
                           <input name="nama_domain" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div> -->
-                        <div class="form-group">
+                        <div class="form-group ">
                           <label for="exampleFormControlSelect1">Nama Domain</label>
-                          <select name="nama_domain" class="form-control" id="exampleFormControlSelect1">
-                            <option selected>Pilih Domain...</option>
+                          <a href="#" rel="tooltip" title ="Input Nama Domain(Proses) yang akan diukur menurut COBIT 5 &#13;Domain : &#13;APO&#13;BAI&#13;DSS&#13;MEA&#13;EDM">
+                            <i class="material-icons">contact_support</i>
+                          </a>
+                          <select class="custom-select"  id="exampleFormControlSelect1" name="nama_domain">
+                            <option selected disabled>Pilih Domain...</option>
                             <option value="APO">APO</option>
                             <option value="BAI">BAI</option>
                             <option value="DSS">DSS</option>
@@ -65,8 +68,11 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleFormControlSelect1">Urutan Proses</label>
-                          <select name="nomor_proses" class="form-control" id="exampleFormControlSelect1">
-                            <option selected>Pilih Nomor Proses...</option>
+                          <a href="#" data-toggle="tooltip" title ="Pilih Urutan Proses yang ada pada COBIT 5">
+                            <i class="material-icons">contact_support</i>
+                          </a>
+                          <select class="custom-select" name="nomor_proses" id="exampleFormControlSelect1">
+                            <option selected disabled>Pilih Nomor Proses...</option>
                             <option value="01">01</option>
                             <option value="02">02</option>
                             <option value="03">03</option>
@@ -84,7 +90,12 @@
                           </select>
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Keterangan</label>
+                          <div>
+                            <label for="exampleFormControlSelect1">Keterangan</label>
+                            <a href="#" data-toggle="tooltip" title ="Pokok Pembahasan dari Proses yang dipilih">
+                              <i class="material-icons">contact_support</i>
+                            </a>  
+                          </div>
                           <input name="keterangan" type="text" class="form-control" id="exampleInputPassword1">
                           <!-- <textarea name="keterangan" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
                         </div>
@@ -92,6 +103,7 @@
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <button type="Add" class="btn btn-primary">Add Data</button>
+                        <!-- <button type="button" class="btn btn-lg btn-danger" data-placement="right" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?" data-html="true">Click to toggle popover</button> -->
                       </div>
                     </form>
                   </div>
@@ -168,4 +180,11 @@
     </div>
   </div>
 </div>
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+        $(".selectpicker").selectpicker();
+    });
+  </script>
 @endsection
+

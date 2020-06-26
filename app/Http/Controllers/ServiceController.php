@@ -14,6 +14,7 @@ class ServiceController extends Controller
     {
         $this->validate($request, [
             'nama_service' => 'required',
+            'status' => 'required',
             'service_owner' => 'required'
         ]);
 

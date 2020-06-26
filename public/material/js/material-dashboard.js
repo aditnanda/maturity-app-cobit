@@ -68,7 +68,7 @@ $(document).ready(function() {
   }
 
   //  Activate the tooltips
-  $('[rel="tooltip"]').tooltip();
+  $('[data-toogle="tooltip"]').tooltip();
 
   $('.form-control').on("focus", function() {
     $(this).parent('.input-group').addClass("input-group-focus");

@@ -15,6 +15,20 @@
 
 /*     brand Colors              */
 
+.tool {
+  border-bottom: 1px dotted;
+  position: relative;
+}
+
+.tool .title {
+    position: absolute;
+    top: 20px;
+    background: silver;
+    padding: 4px;
+    left: 0;
+    white-space: nowrap;
+}
+
 .card {
   font-size: .875rem;
 }

@@ -28,21 +28,23 @@ class DokController extends Controller
    
         //validasi di form view add_dok 
         $this->validate($request, [
-            'nama_proses' => 'required',
-            'sub_domain' => 'required|numeric',
-            'no_bukti' => 'required|numeric',
-            'urutan_bukti' => 'required|numeric',
-            'file' => 'required|mimes:doc,docx,pdf,xls,xlsx,doc,docx,png,jpg|max:10000',
+            // 'nama_proses' => 'required',
+            // 'sub_domain' => 'required|numeric',
+            // 'no_bukti' => 'required|numeric',
+            // 'urutan_bukti' => 'required|numeric',
+            'file' => 'required|mimes:doc,docx,pdf,xls,xlsx,doc,docx,png,jpg,jpeg|max:10000',
             'target_skor' => 'required'
         ]);
         
         //upload to db
-        $dokumen = new Dokumen;
-        $dokumen->nama_proses = $request->nama_proses;
-        $dokumen->sub_domain = $request->sub_domain;
-        $dokumen->no_bukti = $request->no_bukti;
-        $dokumen->urutan_bukti = $request->urutan_bukti;
-        $dokumen->nama_service = $request->nama_service;
+        // $dokumen = new Dokumen;
+
+        $dokumen = Dokumen::findOrFail($id);
+        // $dokumen->nama_proses = $request->nama_proses;
+        // $dokumen->sub_domain = $request->sub_domain;
+        // $dokumen->no_bukti = $request->no_bukti;
+        // $dokumen->urutan_bukti = $request->urutan_bukti;
+        // $dokumen->nama_service = $request->nama_service;
         $dokumen->target_skor = $request->target_skor;
         
         //upload file sesuai nama dan menyimpan file di public folder
@@ -65,21 +67,21 @@ class DokController extends Controller
     {
         //validasi di form view add_dok 
         $this->validate($request, [
-            'nama_proses' => 'required',
-            'sub_domain' => 'required|numeric',
-            'no_bukti' => 'required|numeric',
-            'urutan_bukti' => 'required|numeric',
-            // 'file' => 'required|mimes:doc,docx,pdf,xls,xlsx,doc,docx,png,jpg|max:10000',
+            // 'nama_proses' => 'required',
+            // 'sub_domain' => 'required|numeric',
+            // 'no_bukti' => 'required|numeric',
+            // 'urutan_bukti' => 'required|numeric',
+            'file' => 'required|mimes:doc,docx,pdf,xls,xlsx,doc,docx,png,jpg|max:10000',
             'target_skor' => 'required'
         ]);
 
         $dokumen = Dokumen::findOrFail($id);
 
-        $dokumen->nama_proses = $request->nama_proses;
-        $dokumen->sub_domain = $request->sub_domain;
-        $dokumen->no_bukti = $request->no_bukti;
-        $dokumen->urutan_bukti = $request->urutan_bukti;
-        $dokumen->nama_service = $request->nama_service;
+        // $dokumen->nama_proses = $request->nama_proses;
+        // $dokumen->sub_domain = $request->sub_domain;
+        // $dokumen->no_bukti = $request->no_bukti;
+        // $dokumen->urutan_bukti = $request->urutan_bukti;
+        // $dokumen->nama_service = $request->nama_service;
         $dokumen->target_skor = $request->target_skor;
 
         if(input::hasFile('file')){
@@ -113,11 +115,18 @@ class DokController extends Controller
 		return redirect()->back()->withStatus(__('Data Dokumen Bukti telah di hapus.'));
     }
 
-    public function download($id)
+    public function download(Request $request,$id)
     {
         $download = Dokumen::find($id);
-        // return Storage::download($download->path, $download->file);
-        return response()->download(storage_path("app/public/dokumen/{$download->file}"));
+        // dd($download);
+        $name = "{$download->nama_proses}{$download->sub_domain}{$download->no_bukti}{$download->urutan_bukti}"."-"."{$download->file}";
+        // dd($name);
+        $pathToFile = storage_path("app/public/dokumen/{$download->file}");
+        // dd($pathToFile);
+        //kalau ingin original name
+        // return response()->download( storage_path("app/public/dokumen/{$download->file}"));
+        //nama sesuai rename $name
+        return response()->download($pathToFile, $name.'.'.pathinfo($pathToFile, PATHINFO_EXTENSION));
     }
 
     public function addskor($id)
@@ -170,15 +179,10 @@ class DokController extends Controller
     {
         $cari = $request->seadok;
 
-        $dok = DB::table('dokumen')->where('nama_proses', 'LIKE',  "%".$cari."%") 
+        $dokumen = DB::table('dokumen')->where('nama_proses', 'LIKE',  "%".$cari."%") 
                                         ->orWhere('no_bukti',  'LIKE',  "%".$cari."%")
                                         ->orWhere('target_skor',  'LIKE',  "%".$cari."%")->paginate(8);
-        // $sd = Dokumen::when($request->seadok, 
-        //                     function($query) use($request){
-        //                         $query->where('nama_proses', 'LIKE',  "%{$request->seadok}%") 
-        //                                   ->orWhere('no_bukti',  'LIKE',  "%{$request->seadok}%")
-        //                                   ->orWhere('target_skor',  'LIKE',  "%{$request->seadok}%");
-        //                     })->get();
-        return view('pages.dokumen', ['dokumen' => $dok]);
+        
+        return view('pages.dokumen', compact('dokumen'));
     }
 }

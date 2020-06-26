@@ -19,6 +19,16 @@
         
         <div class= "col-lg-12">
         <div class="card-body">
+        @if(count($errors) > 0)
+                  <div class="alert alert-danger">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="material-icons">close</i>
+                      </button>
+                    @foreach ($errors->all() as $error)
+                      {{ $error }} <br/>
+                    @endforeach
+                  </div>
+                @endif
             <div class="table-responsive">
                 <form action="{{url('/domain')}}/{{$domain->id}}/update" method="POST">
                     {{csrf_field()}}
@@ -29,7 +39,7 @@
                     </div> -->
                     <div class="form-group">
                           <label for="exampleFormControlSelect1">Nama Domain</label>
-                          <select name="nama_domain" class="form-control" id="exampleFormControlSelect1">
+                          <select name="nama_domain" class="custom-select" id="exampleFormControlSelect1">
                             <option value="APO" @if($domain->nama_domain == 'APO') selected='selected' @endif>APO</option>
                             <option value="BAI" @if($domain->nama_domain == 'BAI') selected='selected' @endif>BAI</option>
                             <option value="DSS" @if($domain->nama_domain == 'DSS') selected='selected' @endif>DSS</option>
@@ -39,7 +49,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleFormControlSelect1">Urutan Proses</label>
-                          <select name="nomor_proses" class="form-control" id="exampleFormControlSelect1">
+                          <select name="nomor_proses" class="custom-select" id="exampleFormControlSelect1">
                             <option value="01" @if($domain->nomor_proses == '01') selected='selected' @endif>01</option>
                             <option value="02" @if($domain->nomor_proses == '02') selected='selected' @endif>02</option>
                             <option value="03" @if($domain->nomor_proses == '03') selected='selected' @endif>03</option>

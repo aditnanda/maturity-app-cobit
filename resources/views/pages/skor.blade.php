@@ -16,8 +16,20 @@
               <p class="card-category"> Here is a subtitle for this table</p>
             </div>
           </div>
-        
+
+      
         <div class= "col-lg-12">
+        @if(count($errors) > 0)
+                  <div class="alert alert-danger">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="material-icons">close</i>
+                      </button>
+                    @foreach ($errors->all() as $error)
+                      {{ $error }} <br/>
+                    @endforeach
+                  </div>
+                @endif
+        
         <div class="card-body">
             <div class="table-responsive">
                 <form action="{{url('/dok')}}/{{$dokumen->id}}/skor" method="POST">

@@ -40,7 +40,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Status</label>
-                            <select name="status" class="form-control" id="exampleFormControlSelect1">
+                            <select name="status" class="custom-select" id="exampleFormControlSelect1">
                                 <option value="ACTIVE" @if($service->status == 'ACTIVE') selected='selected' @endif>ACTIVE</option>
                                 <option value="MAINTENANCE" @if($service->status == 'MAINTENANCE') selected='selected' @endif>MAINTENANCE</option>
                                 <option value="DEVELOPMENT" @if($service->status == 'DEVELOPMENT') selected='selected' @endif>UNDER DEVELOPMENT</option>

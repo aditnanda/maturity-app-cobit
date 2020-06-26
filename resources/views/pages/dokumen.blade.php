@@ -32,25 +32,80 @@
                     </div>
                   </div>
                 @endif
+          <!-- Modal Generate kode -->
+
+          <div class="col-6">
+              <!-- Button trigger modal -->
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Tambah Kode Bukti</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="kode/kode" method="POST">
+                        {{csrf_field()}}
+                        <div class="form-group ">
+                          <label for="exampleFormControlSelect1">Nama Proses</label>
+                          <select class="custom-select"  id="exampleFormControlSelect1" name="nama_proses">
+                            <option selected disabled>Pilih Domain...</option>
+                            <option value="APO">APO</option>
+                            <option value="BAI">BAI</option>
+                            <option value="DSS">DSS</option>
+                            <option value="MEA">MEA</option>
+                            <option value="EDM">EDM</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Urutan Proses</label>
+                          <select class="custom-select" name="sub_domain" id="exampleFormControlSelect1">
+                            <option selected disabled>Pilih Nomor Proses...</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Nomor Bukti</label>
+                          <input name="no_bukti" type="text" class="form-control" id="exampleInputPassword1">
+                          <!-- <textarea name="keterangan" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Urutan Bukti</label>
+                          <input name="urutan_bukti" type="text" class="form-control" id="exampleInputPassword1">
+                          <!-- <textarea name="keterangan" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="Add" class="btn btn-primary">Buat Kode</button>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
 
           <div class="card-body">
-            @if(Auth::user()->role == 'user' )
             <div class="row">
-              <div class="col-12 text-right">
-                <a href="dok/upload" class="btn btn-sm btn-primary">{{ __('Tambah Dokumen Bukti') }}</a>
-              </div>
-            </div>
-            @endif
-
-            <!-- @if(Auth::user()->role == 'admin' )
-            <div class="row">
-              <div class="col-12 text-right">
-                <a href="" class="btn btn-sm btn-primary">{{ __('Input Skor') }}</a>
-              </div>
-            </div>
-            @endif -->
-            <div class="table-responsive">
-                <div class="col-xs-2 col-md-4">
+              <div class="col-xs-12 col-md-10">
                   <form class="form-inline ml-auto" method="get" action="{{url('/dok')}}/searchdok">
                       <div class="form-group no-border">
                         <input type="text" name="seadok" class="form-control" placeholder="Search">
@@ -59,47 +114,73 @@
                         <i class="material-icons">search</i>
                       </button>
                   </form>
-                </div>
+              </div>
+              @if(Auth::user()->role == 'admin' )
+              <div class="col-xs-0 col-md-2">
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                <i class="material-icons">add</i>Kode Bukti
+                </button>
+              </div>
+              @endif
+            @if(Auth::user()->role == 'user' )
+              <div class="col-xs-1 col-md-3">
+                <a href="dok/upload" class="btn btn-sm btn-primary">
+                  <i class="material-icons">add</i>
+                  {{ __('Tambah Dokumen Bukti') }}
+                </a>
+              </div>
+            @endif
+            </div>
+            <!-- @if(Auth::user()->role == 'admin' )
+            <div class="row">
+              <div class="col-12 text-right">
+                <a href="" class="btn btn-sm btn-primary">{{ __('Input Skor') }}</a>
+              </div>
+            </div>
+            @endif -->
+            <div class="table-responsive">
+                
               <table class="table">
                 <thead class=" text-primary text-center">
-                  <th>
+                  <th rel="tooltip" data-placement="top" title="Nama Sub-proses yang dipilih berdasarkan penilaian yang dilakukan.">
                     Proses
                   </th>
-                  <th>
+                  <th rel="tooltip" data-placement="top" title="Kode Bukti terbentuk dari gabungan Nama Proses-Nomor Sub Proses-Nomor Bukti-Nomor Urutan Bukti.">
                     Kode Bukti
                   </th>
-                  <th>
+                  <th rel="tooltip" data-placement="top" title="Layanan (Aplikasi) terkait yang ada pada proses yang dinilai.">
                     Layanan
                   </th>
-                  <th>
+                  <th rel="tooltip" data-placement="top" title="Target Skor Assessment untuk penilaian proses yang dipilih.">
                     Target Skor
                   </th>
-                  <th>
+                  <th rel="tooltip" data-placement="top" title="Skor Hasil Assessment penilaian proses yang dipilih.">
                     Skor Assessment
                   </th>
                   <th>
                     Aksi
                   </th>
                 </thead>
-                @foreach($dokumen as $dokumen1)
+                @foreach($dokumen as $datadok)
                 <tbody class="text-center">
-                  <th>{{$dokumen1->nama_proses}}{{$dokumen1->sub_domain}}</th>
-                  <th>{{$dokumen1->nama_proses}}{{$dokumen1->sub_domain}}-{{$dokumen1->no_bukti}}-{{$dokumen1->urutan_bukti}}</th>
-                  <th>{{$dokumen1->nama_service}}</th>
-                  <th>{{$dokumen1->target_skor}}</th>
-                  <th>{{$dokumen1->skor_maturity}}</th>
+                  <th>{{$datadok->nama_proses}}{{$datadok->sub_domain}}</th>
+                  <th><a href="#" rel="tooltip" title="<?php echo $datadok->file;?>">{{$datadok->nama_proses}}{{$datadok->sub_domain}}-{{$datadok->no_bukti}}-{{$datadok->urutan_bukti}}</a></th>
+                  <th>{{$datadok->nama_service}}</th>
+                  <th>{{$datadok->target_skor}}</th>
+                  <th>{{$datadok->skor_maturity}}</th>
 
                   @if(Auth::user()->role == 'user' )
-                  <th><a href="/dok/{{$dokumen1->id}}/edit" class="btn btn-info btn-sm">Edit</a>
-                  <a href="/dok/{{$dokumen1->id}}/delete" class="btn btn-danger btn-sm">Delete</a>
+                  <th><a href="/dok/{{$datadok->id}}/edit" class="btn btn-info btn-sm">Edit</a>
+                  <a href="/dok/{{$datadok->id}}/delete" class="btn btn-danger btn-sm">Delete</a>
                   </th>
                   @endif
 
                   @if(Auth::user()->role == 'admin' )
                   <th>
-                  <a href="dok/{{$dokumen1->id}}/download"class="btn btn-primary btn-sm"><i class="material-icons">save_alt</i></a>
-                  <a href="dok/{{$dokumen1->id}}/addskor" class="btn btn-info btn-sm"><i class="material-icons">add_box</i></a>
-                  <a href="dok/{{$dokumen1->id}}/edskor" class="btn btn-danger btn-sm"><i class="material-icons">edit</i></a>
+                  <a href="/dok/{{$datadok->id}}/download" rel="tooltip" data-placement="right" title="Download Dokumen"><i class="material-icons">save_alt</i></a>
+                  <a href="/dok/{{$datadok->id}}/addskor"  style="color:#2196f3;" rel="tooltip" data-placement="right" title="Input Skor & Rekomendasi"><i class="material-icons">add_box</i></a>
+                  <a href="/dok/{{$datadok->id}}/edskor"  style="color:#4caf50;" rel="tooltip" data-placement="right" title="Edit Data Skor & Rekomendasi"><i class="material-icons">edit</i></a>
+                  <a href="/dok/{{$datadok->id}}/delete"  style="color:#ff0000;" rel="tooltip" data-placement="right" title="Hapus Data" data-placement="left"><i class="material-icons">delete</i></a>
                   </th>
                   @endif
                 </tbody>
@@ -116,4 +197,9 @@
     </div>
   </div>
 </div>
+<!-- <script type="text/javascript">
+    $(document).ready(function() {
+        $("[rel='tooltip']").tooltip();
+    });
+</script> -->
 @endsection

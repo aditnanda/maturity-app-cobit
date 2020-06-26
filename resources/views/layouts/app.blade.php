@@ -142,13 +142,21 @@
         <!--  Notifications Plugin    -->
         <script src="{{ asset('material') }}/js/plugins/bootstrap-notify.js"></script>
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-        <script src="{{ asset('material') }}/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
+        <script src="{{ asset('material') }}/js/material-dashboard.js" type="text/javascript"></script>
         <!-- Material Dashboard DEMO methods, don't include it in your project! -->
         <script src="{{ asset('material') }}/demo/demo.js"></script>
         <script src="{{ asset('material') }}/js/settings.js"></script>
         <script src="{{ asset('/js/chartjs/Chart.bundle.js') }}"></script>
         <script src="{{ asset('/js/custom.js') }}"></script>
 
+        <!-- Pooper Development version -->
+        <script src="{{ asset('material') }}/js/core/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script type="text/javascript">
+          $(document).ready(function(){
+            $("[rel=tooltip]").tooltip();
+          });
+        </script>
         @stack('js')
     </body>
 </html>

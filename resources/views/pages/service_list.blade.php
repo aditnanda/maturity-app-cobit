@@ -50,11 +50,12 @@
                         {{csrf_field()}}
                         <div class="form-group">
                           <label for="exampleInputEmail1">Service Name</label>
-                          <input name="nama_service" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Servis Name">
+                          <input name="nama_service" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Nama Service(Layanan)...">
                         </div>
                         <div class="form-group">
                           <label for="exampleFormControlSelect1">Status</label>
-                          <select name="status" class="form-control" id="exampleFormControlSelect1">
+                          <select name="status" class="custom-select" id="exampleFormControlSelect1">
+                            <option selected disabled>Pilih Status...</option>
                             <option value="ACTIVE">ACTIVE</option>
                             <option value="MAINTENANCE">MAINTENANCE</option>
                             <option value="DEVELOPMENT">UNDER DEVELOPMENT</option>
@@ -62,8 +63,8 @@
                           </select>
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputPassword1">Servis Owner</label>
-                          <input name="service_owner" type="text" class="form-control" id="exampleInputPassword1" placeholder="Servis Owner">
+                          <label for="exampleInputPassword1">Service Owner</label>
+                          <input name="service_owner" type="text" class="form-control" id="exampleInputPassword1" placeholder="Input Divisi yang menggunakan Service terkait...">
                         </div>
         
                     </div>
@@ -120,7 +121,7 @@
                     Service Owner
                   </th>
                   <th>
-                    Action
+                    Aksi
                   </th>
                 </thead>
                 @foreach($service as $service)

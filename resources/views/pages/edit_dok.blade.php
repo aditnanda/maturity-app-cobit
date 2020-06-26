@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-header card-header-primary">
             <div class="col-6">
-              <h4 class="card-title ">Tambah Dokumen Bukti</h4>
+              <h4 class="card-title ">Edit Dokumen Bukti</h4>
               <p class="card-category"> Here is a subtitle for this table</p>
             </div>
           </div>
@@ -35,20 +35,49 @@
                     {{csrf_field()}}
                     @method('post')
                     <div class="form-group">
+                      <!-- <div class="form-row">
+                        <div class= "form-group col-md-6">
+                          <div>
+                            <label for="exampleInputEmail1">Nama Proses</label>
+                            <a href="#" rel="tooltip" data-placement="right" title ="Input Nama Domain(Proses) yang akan diukur menurut COBIT 5. &#13;Domain (Seusaikan Pilihan Anda) : &#13;APO&#13;BAI&#13;DSS&#13;MEA&#13;EDM">
+                                <i class="material-icons">contact_support</i>
+                            </a>
+                          </div>  
+                          <input name="nama_proses" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama domain.." value="{{$dokumen->nama_proses}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <div>
+                            <label for="exampleInputEmail1">Nomor Sub Proses</label>
+                            <a href="#" rel="tooltip" data-placement="right" title ="Input Nomor Sub-Domain(Proses) yang akan diukur menurut COBIT 5. &#13;Contoh Input : 01, 02, 03, 10, dst. &#13;(Setiap Proses yang akan diukur memiliki jumlah sub-proses yang berbeda)">
+                              <i class="material-icons">contact_support</i>
+                            </a>
+                          </div>
+                          <input name="sub_domain" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nomor sub domain.." value="{{$dokumen->sub_domain}}">
+                      </div>
+                     </div>
+                    </div> -->
+
+
+                    <!-- <div class="form-group">
                         <label for="exampleInputEmail1">Nama Proses</label>
                         <input name="nama_proses" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama proses (domain).." value="{{$dokumen->nama_proses}}">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Sub Domain Proses</label>
                         <input name="sub_domain" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nomor sub Domain Proses" value="{{$dokumen->sub_domain}}">
-                    </div>
-                    <div class="form-group">
+                    </div> -->
+                    <!-- <div class="form-group">
                         <label for="exampleInputEmail1">Nomor Bukti</label>
                         <input name="no_bukti" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nomor bukti dokumen.." value="{{$dokumen->no_bukti}}">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nomor Urutan Bukti</label>
                         <input name="urutan_bukti" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan urutan dari nomor bukti dokumen.." value="{{$dokumen->urutan_bukti}}">
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Kode Bukti</label>
+                        <input name="target_skor" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Target Skor Asessmen.." value="{{$dokumen->nama_proses}}{{$dokumen->sub_domain}}-{{$dokumen->no_bukti}}-{{$dokumen->urutan_bukti}}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Target Skor</label>

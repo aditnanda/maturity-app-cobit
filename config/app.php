@@ -149,6 +149,7 @@ return [
         App\Providers\DomainProvider::class,
         App\Providers\ITServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
 
         /*
          * Package Service Providers...

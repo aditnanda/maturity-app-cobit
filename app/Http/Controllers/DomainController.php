@@ -18,6 +18,8 @@ class DomainController extends Controller
     public function create(Request $request)
     {
         $this->validate($request,[
+            'nama_domain' => 'required',
+            'nomor_proses' =>'required',
             'keterangan' => 'required'
         ]);
 
@@ -40,6 +42,8 @@ class DomainController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
+            'nama_domain' => 'required',
+            'nomor_proses' =>'required',
             'keterangan' => 'required'
         ]);
 
@@ -63,8 +67,9 @@ class DomainController extends Controller
     {
         $cari = $request->seadom;
 
-        $domain = DB::table('domain')->where('nama_domain', 'LIKE',  "%".$cari."%") 
-                                        ->orWhere('nomor_proses',  'LIKE',  "%".$cari."%")->paginate(8);
+        $domain = DB::table('domain')->where('nama_domain', 'LIKE',  "%".$cari."%")
+                                     ->orWhere('nomor_proses',  'LIKE',  "%".$cari."%")
+                                     ->orWhere('keterangan',  'LIKE',  "%".$cari."%")->paginate(8);
 
         return view('pages.subDomain', compact('domain'));
     }

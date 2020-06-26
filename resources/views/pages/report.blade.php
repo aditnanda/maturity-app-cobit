@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Report</title>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="{{ asset('material') }}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="{{ asset('material') }}/demo/demo.css" rel="stylesheet" />
 </head>
 <body>
   <div class="content">
@@ -12,16 +18,6 @@
       <div class="row">
         
         <div class="col-md-12">
-          <div class="card card-chart">
-            <div class="card-header card-header">
-              <h4 class="card-title">Tingkat Kematangan</h4>
-              <canvas id="maturitylevel"></canvas>
-            </div>
-            <div class="card-body">
-              <div class="col-lg-12 col-md-12">
-                <img src="{{asset('chart/chart.png')}}" alt="">
-              </div>
-      
               <div class="col-lg-12 col-md-12">
                 <div class="card">
                   <div class="card-header card-header-warning">

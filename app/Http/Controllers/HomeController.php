@@ -53,6 +53,9 @@ class HomeController extends Controller
                 }
                 
             }
+            //total dari skor maturity dibagi dengan jumlah proses yang diinput
+            //semisal proses dari kelompok APO jika ditotal ada 5
+            //maka total dari skor maturity dibagi 5
             if ($total != 0) {
                 $total = $total/$jumlah;
             }

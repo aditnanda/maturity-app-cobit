@@ -5,6 +5,7 @@
 <!-- <div class="alert alert-info" role="alert">
   Sucess!
 </div> -->
+
 <div class="content">
   <div class="container-fluid">
     <div class="row">
@@ -13,7 +14,6 @@
           <div class="card-header card-header-primary">
             <div class="col-6">
               <h4 class="card-title ">Tambah Dokumen Bukti</h4>
-              <p class="card-category"> Here is a subtitle for this table</p>
             </div>
           </div>
         
@@ -34,27 +34,62 @@
                 <form action="{{url('/dok')}}/add" method="POST" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Nama Domain</label>
-                        <input name="nama_proses" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama domain..">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Nomor Sub Domain</label>
+                      <div class="form-row">
+                        <div class= "form-group col-md-6">
+                          <div>
+                            <label for="exampleInputEmail1">Nama Proses</label>
+                            <a href="#" rel="tooltip" data-placement="right" title ="Input Nama Domain(Proses) yang akan diukur menurut COBIT 5. &#13;Domain (Seusaikan Pilihan Anda) : &#13;APO&#13;BAI&#13;DSS&#13;MEA&#13;EDM">
+                                <i class="material-icons">contact_support</i>
+                            </a>
+                          </div>  
+                          <input name="nama_proses" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nama domain..">
+                        </div>
+                        <div class="form-group col-md-6">
+                        <div>
+                          <label for="exampleInputEmail1">Nomor Sub Proses</label>
+                          <a href="#" rel="tooltip" data-placement="right" title ="Input Nomor Sub-Domain(Proses) yang akan diukur menurut COBIT 5. &#13;Contoh Input : 01, 02, 03, 10, dst. &#13;(Setiap Proses yang akan diukur memiliki jumlah sub-proses yang berbeda)">
+                              <i class="material-icons">contact_support</i>
+                          </a>
+                        </div>
                         <input name="sub_domain" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nomor sub domain..">
+                      </div>
+                     </div>
                     </div>
+                    
                     <div class="form-group">
+                      <div>
                         <label for="exampleInputEmail1">Nomor Bukti</label>
-                        <input name="no_bukti" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nomor bukti dokumen..">
+                        <a href="#" rel="tooltip" data-placement="right" title ="Input Nomor Bukti berdasarkan urutan kategori dari pengukuran domain yang dipilih. &#13;Contoh Input : 001, 002, 010, 101, 120, dst. &#13;(Setiap sub-Proses yang akan dikur memiliki jumlah kategori penilaian yang berbeda)">
+                            <i class="material-icons">contact_support</i>
+                        </a>
+                      </div>
+                      <input name="no_bukti" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan nomor bukti dokumen..">
                     </div>
                     <div class="form-group">
+                      <div>
                         <label for="exampleInputEmail1">Nomor Urutan Bukti</label>
-                        <input name="urutan_bukti" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan urutan dari nomor bukti dokumen..">
+                        <a href="#" rel="tooltip" data-placement="right" title ="Input Urutan Bukti sebagai pemisah ketika kategori penilaian dari sub-proses yang dipilih memiliki lebih dari 1 bukti. &#13;Contoh Input : 01, 02, 10, 11, 20, dst. &#13;">
+                            <i class="material-icons">contact_support</i>
+                        </a>
+                      </div> 
+                      <input name="urutan_bukti" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan urutan dari nomor bukti dokumen..">
                     </div>
                     <div class="form-group">
+                      <div>
                         <label for="exampleInputEmail1">Target Skor</label>
-                        <input name="target_skor" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Target Skor Asessmen..">
+                        <a href="#" rel="tooltip" data-placement="right" title ="Input Target Skor penilaian untuk kategori penilaian dari sub-proses yang dipilih. &#13;Contoh Input : 0.15, 1.5, 2.3, 3.3, dst. &#13;(Target Skor yang diinput dimulai dari skor 0 sampai dengan 5)">
+                            <i class="material-icons">contact_support</i>
+                        </a>
+                      </div>
+                      <input name="target_skor" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Target Skor Asessmen..">
                     </div>
                     <div class="form-group form-file-upload form-file-multiple">
-                    <label for="exampleInputEmail1">Bukti Dokumen</label>
+                      <div>
+                        <label for="exampleInputEmail1">Bukti Dokumen</label>
+                        <a href="#" rel="tooltip" data-placement="right" title ="Input Bukti Dokumen(File) sesuai dengan kategori penilaian dari sub-proses yang dipilih. &#13;Format File : docx, doc, pdf, xls, xlsx, png, jpg &#13;">
+                            <i class="material-icons">contact_support</i>
+                        </a>
+                      </div>
                         <input type="file" name="file" multiple="" class="inputFileHidden">
                         <div class="input-group">
                             <input type="text" class="form-control inputFileVisible" placeholder="Masukkan Bukti Dokumen">
@@ -66,18 +101,23 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Layanan</label>
+                      <div>
+                        <label for="exampleInputEmail1">Layanan</label> 
+                        <a href="#" rel="tooltip" data-placement="right"  title="Input Aplikasi Layanan (jika ada) yang digunakan dalam sub-proses yang dipilih. &#13;Contoh : SIM Persuratan, HR Clinic, dst. &#13;">
+                            <i class="material-icons">contact_support</i>
+                        </a>
+                      </div>
                         <input name="nama_service" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Layanan terkait..">
                     </div>
                     <div class="modal-footer">
-                        <a href="/dokumen" type="button" class="btn btn-secondary">Cancel</a>
-                        <button type="Add" class="btn btn-primary">Add Data</button>
+                      <a href="/dokumen" type="button" class="btn btn-secondary">Cancel</a>
+                      <button type="Add" class="btn btn-primary">Add Data</button>
                     </div>
                 </form>  
             </div>
           </div>
         </div>
-        </div>
+        </div> 
         
       </div>
     </div>

@@ -95,6 +95,9 @@ Route::group(['middleware' => 'auth'], function () {
 	//cetak
 	Route::get('/home/report', 'HomeController@report');
 
+	//kode
+	Route::post('/kode/kode','KodeController@kode');
+
 	Route::get('typography', function () {
 		return view('pages.typography');
 	})->name('typography');

@@ -11,7 +11,7 @@
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-    @if(Auth::user()->role == 'admin'){
+    @if(Auth::user()->role == 'admin')
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
           <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
@@ -89,6 +89,13 @@
         <a class="nav-link" href="{{ route('home') }}">
           <i class="material-icons">dashboard</i>
             <p>{{ __('Skor Maturity') }}</p>
+        </a>
+      </li>
+      <hr>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+          <i class="material-icons">exit_to_app</i>
+          <p> {{ __('Log Out') }}</p>
         </a>
       </li>
     </ul>
