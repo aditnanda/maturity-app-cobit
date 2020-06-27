@@ -92,6 +92,12 @@
         </a>
       </li>
       <hr>
+      <li class="nav-item{{ $activePage == 'backup' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('backup') }}">
+          <i class="material-icons">arrow_circle_down</i>
+            <p>{{ __('Backup') }}</p>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
           <i class="material-icons">exit_to_app</i>

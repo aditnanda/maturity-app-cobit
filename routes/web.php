@@ -98,6 +98,9 @@ Route::group(['middleware' => 'auth'], function () {
 	//kode
 	Route::post('/kode/kode','KodeController@kode');
 
+	//Backup data
+	Route::get('/backup','BackupController@index')->name('backup');
+
 	Route::get('typography', function () {
 		return view('pages.typography');
 	})->name('typography');
