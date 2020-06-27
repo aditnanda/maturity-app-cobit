@@ -100,6 +100,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Backup data
 	Route::get('/backup','BackupController@index')->name('backup');
+	Route::get('/backup/create','BackupController@create');
 
 	Route::get('typography', function () {
 		return view('pages.typography');

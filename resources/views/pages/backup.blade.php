@@ -33,9 +33,9 @@
                 @endif
             
                 <div class="col-xs-0 col-md-2">
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                <a href="{{url('/backup/create')}}" class="btn btn-primary btn-sm" >
                   Buat Backup
-                </button>
+                </a>
               </div>
             <div class="table-responsive">
               <table class="table">
